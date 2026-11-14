@@ -1,0 +1,123 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(148, 163, 184, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+}
+
+/* =========================================
+   DARK MODE GLOBAL OTOMATIS
+   ========================================= */
+html.dark,
+html.dark body,
+html.dark #root {
+  background-color: #020617 !important; /* slate-950 */
+  color: #f1f5f9 !important; /* slate-100 */
+}
+
+html.dark .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+}
+
+html.dark .bg-white,
+html.dark .bg-slate-50,
+html.dark [class*="bg-white/"],
+html.dark [class*="bg-slate-50/"] {
+  background-color: #0f172a !important; /* slate-900 */
+}
+
+html.dark .bg-slate-100 {
+  background-color: #1e293b !important; /* slate-800 */
+}
+
+/* Penyesuaian tombol gelap di Hero (misal: Eksplorasi Studi Kasus) agar tetap kontras */
+html.dark .bg-slate-900 {
+  background-color: #2563eb !important; /* blue-600 */
+  color: #ffffff !important;
+}
+
+html.dark .text-slate-900,
+html.dark .text-slate-800 {
+  color: #f8fafc !important;
+}
+
+html.dark .text-slate-700,
+html.dark .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+
+html.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+html.dark [class*="border-slate-200"],
+html.dark [class*="border-slate-100"] {
+  border-color: #1e293b !important;
+}
+
+/* =========================================
+   RAPIKAN KOTAK GOOGLE TRANSLATE
+   ========================================= */
+.goog-te-banner-frame.skiptranslate,
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
+}
+
+#google_translate_element {
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.goog-te-gadget {
+  font-family: inherit !important;
+  font-size: 0 !important;
+  line-height: 1 !important;
+}
+
+.goog-te-gadget-simple {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 4px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  height: 32px !important;
+  cursor: pointer;
+}
+
+.goog-te-gadget-simple img {
+  display: none !important;
+}
+
+.goog-te-gadget-simple span {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #334155 !important;
+  white-space: nowrap !important;
+}
+
+html.dark .goog-te-gadget-simple span {
+  color: #e2e8f0 !important;
+}
+
+.goog-te-gadget-simple span[style*="border-left"] {
+  display: none !important;
+}
