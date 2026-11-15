@@ -7,11 +7,78 @@
   }
 }
 
+/* =========================================
+   POLA GRID & AURORA GRADIENT (LIGHT & DARK)
+   ========================================= */
 .bg-grid-pattern {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(148, 163, 184, 0.12) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+    radial-gradient(circle at 80% 15%, rgba(59, 130, 246, 0.14), transparent 40%),
+    radial-gradient(circle at 15% 30%, rgba(99, 102, 241, 0.10), transparent 35%),
+    linear-gradient(to right, rgba(148, 163, 184, 0.14) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.14) 1px, transparent 1px);
+}
+
+html.dark .bg-grid-pattern {
+  background-image: 
+    radial-gradient(circle at 80% 15%, rgba(59, 130, 246, 0.22), transparent 45%),
+    radial-gradient(circle at 15% 30%, rgba(139, 92, 246, 0.16), transparent 40%),
+    linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+}
+
+/* Gradasi halus pada area konten utama agar tidak polos */
+main {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(239, 246, 255, 0.45) 35%,
+    rgba(248, 250, 252, 0.8) 70%,
+    rgba(238, 242, 255, 0.45) 100%
+  );
+}
+
+html.dark main {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(15, 23, 42, 0.6) 35%,
+    rgba(2, 6, 23, 0.9) 70%,
+    rgba(15, 23, 42, 0.7) 100%
+  );
+}
+
+/* =========================================
+   EFEK INTERAKTIF KARTU & SCROLLBAR
+   ========================================= */
+section .rounded-2xl {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+section .rounded-2xl:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px -8px rgba(37, 99, 235, 0.14);
+}
+
+html.dark section .rounded-2xl:hover {
+  box-shadow: 0 12px 28px -8px rgba(59, 130, 246, 0.22);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.6);
 }
 
 /* =========================================
@@ -22,12 +89,6 @@ html.dark body,
 html.dark #root {
   background-color: #020617 !important; /* slate-950 */
   color: #f1f5f9 !important; /* slate-100 */
-}
-
-html.dark .bg-grid-pattern {
-  background-image: 
-    linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
 }
 
 html.dark .bg-white,
