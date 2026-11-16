@@ -16,13 +16,11 @@ export default function Projects() {
   const [activeImage, setActiveImage] = useState("");
   const [activeCategory, setActiveCategory] = useState("Semua");
 
-  // Membuat daftar kategori unik secara otomatis dari projectsData
   const categories = [
     "Semua",
     ...new Set(projectsData.map((project) => project.category)),
   ];
 
-  // Menyaring proyek berdasarkan tab kategori yang aktif
   const filteredProjects =
     activeCategory === "Semua"
       ? projectsData
@@ -33,7 +31,6 @@ export default function Projects() {
     setActiveImage(project.image);
   };
 
-  // Menutup modal ketika tombol Escape ditekan & mengunci scroll layar belakang
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") setSelectedProject(null);
@@ -103,7 +100,7 @@ export default function Projects() {
       </div>
 
       {/* Grid Kartu Proyek */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-6">
         {filteredProjects.map((project) => (
           <div
             key={project.id}
@@ -125,7 +122,6 @@ export default function Projects() {
                   {project.category}
                 </span>
 
-                {/* Indikator cepat jika tersedia Live Demo */}
                 {project.liveUrl && (
                   <span className="absolute top-3 right-3 px-2 py-1 text-[10px] font-bold bg-emerald-500/90 text-white rounded-md shadow-2xs backdrop-blur-xs">
                     Live Demo
@@ -162,18 +158,18 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Modal Detail Proyek */}
+      {/* Modal Detail Proyek (Tinggi terkunci max-h-[90vh] agar tidak terpotong di layar) */}
       {selectedProject && (
         <div
           onClick={() => setSelectedProject(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/70 backdrop-blur-xs p-4 overflow-y-auto"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/75 backdrop-blur-xs p-4 sm:p-6"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 overflow-hidden my-8"
+            className="relative w-full max-w-2xl max-h-[90vh] flex flex-col bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden"
           >
-            {/* Header Gambar Modal */}
-            <div className="relative h-56 sm:h-64 bg-slate-100 dark:bg-slate-800">
+            {/* Header Gambar Modal (Fixed di bagian atas modal) */}
+            <div className="relative h-48 sm:h-56 shrink-0 bg-slate-100 dark:bg-slate-800">
               <img
                 src={activeImage || selectedProject.image}
                 alt={selectedProject.title}
@@ -181,50 +177,50 @@ export default function Projects() {
                   e.currentTarget.src =
                     "https://placehold.co/800x450/e2e8f0/1e293b?text=Preview+Proyek";
                 }}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-top"
               />
               <button
                 onClick={() => setSelectedProject(null)}
                 aria-label="Tutup modal"
-                className="absolute top-4 right-4 p-2 rounded-full bg-slate-900/75 text-white hover:bg-slate-900 transition cursor-pointer"
+                className="absolute top-3 right-3 p-2 rounded-full bg-slate-900/80 text-white hover:bg-slate-950 transition cursor-pointer shadow-md"
               >
                 <X size={18} />
               </button>
-              <span className="absolute bottom-4 left-6 px-3 py-1 text-xs font-bold bg-blue-600 text-white rounded-lg shadow-xs">
+              <span className="absolute bottom-3 left-6 px-3 py-1 text-xs font-bold bg-blue-600 text-white rounded-lg shadow-xs">
                 {selectedProject.category}
               </span>
             </div>
 
-            {/* Thumbnail Galeri (Muncul jika proyek punya lebih dari 1 screenshot) */}
-            {selectedProject.gallery && selectedProject.gallery.length > 1 && (
-              <div className="px-6 sm:px-8 pt-4 flex gap-2.5 overflow-x-auto">
-                {selectedProject.gallery.map((imgUrl, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    onClick={() => setActiveImage(imgUrl)}
-                    className={`relative h-14 w-24 rounded-lg overflow-hidden border-2 shrink-0 transition cursor-pointer ${
-                      activeImage === imgUrl
-                        ? "border-blue-600 ring-2 ring-blue-600/20"
-                        : "border-transparent opacity-65 hover:opacity-100"
-                    }`}
-                  >
-                    <img
-                      src={imgUrl}
-                      alt={`Screenshot ${index + 1}`}
-                      onError={(e) => {
-                        e.currentTarget.src =
-                          "https://placehold.co/400x225/e2e8f0/1e293b?text=Slide";
-                      }}
-                      className="w-full h-full object-cover"
-                    />
-                  </button>
-                ))}
-              </div>
-            )}
+            {/* Area Konten yang Bisa Di-scroll Penuh */}
+            <div className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-5">
+              {/* Thumbnail Galeri */}
+              {selectedProject.gallery && selectedProject.gallery.length > 1 && (
+                <div className="flex gap-2.5 overflow-x-auto pb-1">
+                  {selectedProject.gallery.map((imgUrl, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      onClick={() => setActiveImage(imgUrl)}
+                      className={`relative h-14 w-24 rounded-lg overflow-hidden border-2 shrink-0 transition cursor-pointer ${
+                        activeImage === imgUrl
+                          ? "border-blue-600 ring-2 ring-blue-600/20"
+                          : "border-transparent opacity-65 hover:opacity-100"
+                      }`}
+                    >
+                      <img
+                        src={imgUrl}
+                        alt={`Screenshot ${index + 1}`}
+                        onError={(e) => {
+                          e.currentTarget.src =
+                            "https://placehold.co/400x225/e2e8f0/1e293b?text=Slide";
+                        }}
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
 
-            {/* Konten Detail Modal */}
-            <div className="p-6 sm:p-8 space-y-5 max-h-[68vh] overflow-y-auto">
               <div>
                 <h3 className="text-xl font-extrabold text-slate-900 dark:text-white leading-snug mb-3">
                   {selectedProject.title}
@@ -242,7 +238,7 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* Tombol Live Demo & GitHub Repo (Muncul otomatis jika link tersedia) */}
+                {/* Tombol Live Demo & GitHub Repo */}
                 {(selectedProject.liveUrl || selectedProject.repoUrl) && (
                   <div className="flex flex-wrap gap-3 pt-1">
                     {selectedProject.liveUrl && (
