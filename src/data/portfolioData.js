@@ -31,6 +31,28 @@ export const projectsData = [
   },
   {
     id: 2,
+    title: "Aplikasi Web Booking Event & Hiburan Thomas Abracadabra",
+    category: "Full-Stack Web Development",
+    tags: ["React", "Node.js", "Express.js", "Tailwind CSS", "MySQL (TiDB)", "JWT"],
+    image: "/images/thomas-abracadabra-home.png",
+    gallery: [
+      "/images/thomas-abracadabra-home.png",
+      "/images/thomas-abracadabra-admin.png",
+      "/images/thomas-abracadabra-track.png",
+    ],
+    liveUrl: "https://thomas-abracadabra.vercel.app",
+    repoUrl: "https://github.com/Gin-Gone26/thomas-abracadabra",
+    shortDesc:
+      "Platform pemesanan jasa hiburan acara dan badut karakter berbasis web dengan simulasi harga otomatis, pelacakan status pesanan real-time, serta dashboard admin terintegrasi.",
+    problem:
+      "Proses pemesanan jasa hiburan ulang tahun dan acara sebelumnya masih dilakukan secara manual melalui chat WhatsApp tanpa katalog layanan terstruktur, sehingga pelanggan kesulitan menghitung estimasi biaya paket beserta add-on dan pengelola kesulitan merekap jadwal serta ketersediaan kostum.",
+    method:
+      "Membangun aplikasi full-stack menggunakan React, Vite, dan Tailwind CSS dengan backend Node.js/Express Serverless di Vercel serta cloud database MySQL (TiDB Cloud). Mengimplementasikan katalog simulasi harga otomatis, pembuatan kode booking unik terintegrasi WhatsApp, halaman pelacakan status mandiri, serta dashboard admin berproteksi JWT.",
+    result:
+      "Mendigitalisasi seluruh alur pemesanan dari katalog hingga rekapitulasi jadwal dalam satu platform responsif (mobile-first), menghilangkan kesalahan hitung harga manual, serta menyediakan visibilitas jadwal dan estimasi omzet secara langsung bagi pengelola.",
+  },
+  {
+    id: 3,
     title: "Pengembangan Aplikasi Web Full-Stack",
     category: "Web Development",
     tags: ["PHP", "Laravel", "JavaScript", "Bootstrap", "MySQL"],
@@ -45,7 +67,7 @@ export const projectsData = [
       "Menghasilkan modul aplikasi web fungsional dengan operasi pengelolaan data (CRUD) yang terstruktur serta repositori kode yang terdokumentasi rapi di GitHub.",
   },
   {
-    id: 3,
+    id: 4,
     title: "Pemodelan Arsitektur Sistem & Basis Data",
     category: "System Design",
     tags: ["UML", "ERD", "Visual Paradigm", "SQL"],
@@ -93,6 +115,8 @@ export const publicationsData = [
     id: 1,
     type: "Artikel Ilmiah & Tugas Akhir • Jurnal Computech & Bisnis",
     year: "2026",
+    status: "Dalam Proses Publikasi",
+    articleUrl: "", // Isi URL OJS di sini jika jurnal sudah terbit
     title:
       "Dashboard Evaluasi Penerimaan ASN Terhadap Aplikasi BEBEONG Banjar SuperApps Kota Banjar Menggunakan Technology Acceptance Model (TAM) dan DSRM",
     summary:
@@ -105,7 +129,7 @@ export const skillsData = [
     category: "Pengembangan Web (Frontend & Backend)",
     items: [
       "HTML, CSS & Bootstrap",
-      "JavaScript (Dasar & Back-End Pemula)",
+      "JavaScript (React, Node.js & Express)",
       "PHP & Framework Laravel",
       "Python & Streamlit",
       "Git & GitHub Version Control",
@@ -114,7 +138,7 @@ export const skillsData = [
   {
     category: "Basis Data & Analisis Data",
     items: [
-      "MySQL, SQLite & SQL",
+      "MySQL (TiDB/Aiven), SQLite & SQL",
       "Uji Statistik & Hipotesis (Jamovi)",
       "Evaluasi Sistem (TAM & DSRM)",
       "Pemodelan Sistem (UML & ERD)",
@@ -139,6 +163,7 @@ export const certificationsData = [
     program: "Program Accenture Asah – Dicoding Indonesia",
     period: "2025 – 2026",
     issuer: "Dicoding & Accenture",
+    credentialUrl: "", // Opsional: isi tautan verifikasi sertifikat Dicoding jika ada
     description:
       "Menyelesaikan rangkaian pelatihan intensif pengembangan web modern, pemrograman JavaScript, dasar Cloud & Generative AI di AWS, serta pengelolaan versi kode menggunakan Git dan GitHub.",
     courses: [
@@ -157,6 +182,7 @@ export const certificationsData = [
     program: "Pelatihan Teknisi Komputer",
     period: "2021",
     issuer: "LPK Kurnia • Banjar, Jawa Barat",
+    credentialUrl: "",
     description:
       "Mengikuti pelatihan praktik terkait perakitan, perawatan berkala, instalasi perangkat lunak, serta identifikasi dan penanganan troubleshooting perangkat keras komputer.",
     courses: [
